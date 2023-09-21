@@ -1,7 +1,7 @@
 # TradingView-Web-Scraper
 
 ## Overview:
-The goal of this project was to develop an automated web scraping solution for extracting stock data from [TradingView.com](https://in.tradingview.com/), a popular financial website known for its comprehensive stock market information. The project involved the creation of a specialized scraping bot that could efficiently gather up-to-date stock data, including price, volume, technical indicators, and other relevant information.
+The goal of this project was to develop an automated web scraping solution for extracting stock data tables from [TradingView.com](https://in.tradingview.com/), a popular financial website known for its comprehensive stock market information. The project involved the creation of a specialized scraping bot that could efficiently gather up-to-date stock data, including price, volume, technical indicators, and other relevant information.
 
 ## Components:
 - #### Scraping Bot Development:
