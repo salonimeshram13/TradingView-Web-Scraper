@@ -9,7 +9,7 @@ A custom web scraping bot was developed using Python and web scraping libraries 
 
 - #### Data Storage:
 The scraped data was stored in a Excel file system for easy access and retrieval. 
-
+ 
 - #### Data Visualization:
 The scraped data was cleaned using Power Querries in Power BI desktop. Prepared an interactive dashboard which is attached below;
 
