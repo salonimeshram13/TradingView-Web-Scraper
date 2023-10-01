@@ -41,21 +41,43 @@ def Scrape_stocks(url):
 
 
                 print(f"Scraping {url}...")
-
+                
                 # Create variable to get url
                 page = requests.get(url)
-                soup = BeautifulSoup(page.text, "lxml")
 
 
-                # Create a DataFrame to read the webpages
-                df = pd.read_html(url)[0]
+                # Parse the HTML content of the page using BeautifulSoup
+                soup = BeautifulSoup(page.content, "html.parser")
+
+
+                # Find the table with class name "table-Ngq2xrcG"
+                table = soup.find("table", class_="table-Ngq2xrcG")
+
+                if table:
+                        # Extract table rows
+                        rows = table.find_all("tr")
+
+                        # Extract table headers
+                        headers = [header.text.strip() for header in rows[0].find_all("th")]
+                                        
+                        # Extract table data
+                        data = []
+                        for row in rows[1:]:
+                                row_data = [cell.text.strip() for cell in row.find_all("td")]
+                                data.append(row_data)
+                
+                else:
+                        print("Table not found..!!")
+                        
+                # Create a DataFrame using pandas
+                df = pd.DataFrame(data, columns=headers)
 
 
                 # Replace hyphens with an empty string in the DataFrame
-                df.replace('-', '', inplace=True)
+                df.replace('—', '', inplace=True)
 
-
-                # Save the DataFrame to the Excel file
+        
+                # Save the DataFrame to an Excel file
                 df.to_excel(xl_writer, sheet_name=(url.split('/')[-2]).split('-')[-1], index=False)
                 
 
@@ -69,10 +91,3 @@ for url in urls:
 
 ## Step-7: Save and Close Excel file
 xl_writer.close()
-
-
-
-
-
-
-
